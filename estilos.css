@@ -14,8 +14,7 @@ body, html {
 
 .objeto {
     position: absolute;
-  }
-
+}
 
 #mate {
     left: calc(50% - 600px);
@@ -27,54 +26,85 @@ body, html {
     cursor: grab;
 }
 
-#mate {
-    animation: temblor 0.3s;
+#mate, #termo {
+    animation: none; /* Asegura que no tenga animación al cargar */
 }
 
 #termo:hover {
-    animation: temblor 0.5s infinite;
+    animation: temblor 0.3s infinite;
 }
 
-#termo.animar{
-    animation: cebar 10s forwards;
+#termo.animar {
+    animation: cebar 8s forwards;
     transform-origin: center;
 }
 
-#termo{
-    animation: cambio 1s forwards;
-    transform-origin: center;
+#agua_mate {
+    position: absolute;
+    left: calc(50% - 615px);
+    bottom: calc(50% - 340px); /* Mueve la barra debajo del mate */
 }
+
+#agua_termo {
+    position: absolute;
+    left: calc(50% + 395px);
+    bottom: calc(50% - 340px); /* Mueve la barra debajo del termo */
+}
+
 @keyframes temblor {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
+    25% { transform: translateX(-10px); }
     50% { transform: translateX(4px); }
-    75% { transform: translateX(-4px); }
+    75% { transform: translateX(-10px); }
     100% { transform: translateX(0); }
 }
 
 @keyframes cebar {
-    0% {transform: translate(0, 0) rotate(0deg);}
-    25% {transform: translate(-750px) rotate(0deg);}
-    50% {transform: translate(-750px, 50px) rotate(-70deg);}
-    75% {transform: translate(-750px, 50px) rotate(-70deg);}
-    100% {transform: translate(0, 0) rotate(0deg);}
+    0% { 
+        transform: translate(0, 0) rotate(0deg); /* Comienza en la posición inicial */
+    }
+    10% { 
+        transform: translate(-750px) rotate(-70deg); /* Mueve el termo hacia la izquierda */
+    }
+    50% { 
+        transform: translate(-750px, 50px) rotate(-70deg); /* Inclina el termo y sigue moviéndolo */
+    }
+    60% { 
+        transform: translate(-750px, 50px) rotate(-70deg); /* Mantén la inclinación y la posición */
+    }
+    90% { 
+        transform: translate(-750px, 50px) rotate(-70deg); /* Mantén la inclinación y la posición */
+    }
+    100% { 
+        transform: translate(0, 0) rotate(0deg); /* Vuelve al inicio */
+    }
 }
 
-@keyframes cambio {
-    0% {transform: translateX(0);}
-    40% {transform: translateX(-100vw);}
-    41% {transform: translateX(100vw);}
-    100% {transform: translateX(0);}
+@keyframes tomar {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
 }
 
-#agua-mate {
-    position: absolute;
-    left: calc(50% - 615px);
-    bottom: calc(50% - 340px);
+#mate.tomar {
+    animation: tomar 0.1s ease-in-out;
 }
 
-#agua-termo {
-    position: absolute;
-    left: calc(50% + 395px);
-    bottom: calc(50% - 340px);
+@keyframes rellenar {
+    0% {
+      transform: translateX(0);
+    }
+    40% {
+      transform: translateX(-100vw); /* Se mueve fuera de la pantalla por la izquierda */
+    }
+    41% {
+      transform: translateX(100vw); /* Aparece por la derecha */
+    }
+    100% {
+      transform: translateX(0); /* Regresa a su punto de origen */
+    }
+}
+
+#termo.rellenar {
+    animation : rellenar 1.5s ease-in-out;
 }
