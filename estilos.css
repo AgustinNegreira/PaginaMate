@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    background-color: #85b394;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.objeto {
+    position: absolute;
+  }
+
+
+#mate {
+    left: calc(50% - 600px);
+    bottom: calc(50% - 290px);
+}
+
+#termo {
+    left: calc(50% + 400px);
+    cursor: grab;
+}
+
+#mate {
+    animation: temblor 0.3s;
+}
+
+#termo:hover {
+    animation: temblor 0.5s infinite;
+}
+
+#termo.animar{
+    animation: cebar 10s forwards;
+    transform-origin: center;
+}
+
+#termo{
+    animation: cambio 1s forwards;
+    transform-origin: center;
+}
+@keyframes temblor {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes cebar {
+    0% {transform: translate(0, 0) rotate(0deg);}
+    25% {transform: translate(-750px) rotate(0deg);}
+    50% {transform: translate(-750px, 50px) rotate(-70deg);}
+    75% {transform: translate(-750px, 50px) rotate(-70deg);}
+    100% {transform: translate(0, 0) rotate(0deg);}
+}
+
+@keyframes cambio {
+    0% {transform: translateX(0);}
+    40% {transform: translateX(-100vw);}
+    41% {transform: translateX(100vw);}
+    100% {transform: translateX(0);}
+}
+
+#agua-mate {
+    position: absolute;
+    left: calc(50% - 615px);
+    bottom: calc(50% - 340px);
+}
+
+#agua-termo {
+    position: absolute;
+    left: calc(50% + 395px);
+    bottom: calc(50% - 340px);
+}
